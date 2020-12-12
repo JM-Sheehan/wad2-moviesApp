@@ -3,35 +3,35 @@ import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import HomePage from "./pages/homePage";
 import MoviePage from './pages/movieDetailsPage';
-import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom"  ;  // CHANGED
+import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";  // CHANGED
 import FavoriteMoviesPage from "./pages/favouriteMoviesPage";       // NEW
 
 const App = () => {
   return (
     <BrowserRouter>
-    <div className="jumbotron">
-      <div className="container-fluid">
-        <ul className="navbar-nav text-black">
-          <li className="nav-item">
-            <Link className="nav-link " to="/">
-              Home
+      <div className="jumbotron">
+        <div className="container-fluid">
+          <ul className="navbar-nav text-black">
+            <li className="nav-item">
+              <Link className="nav-link " to="/">
+                Home
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link " to="/movies/favorites">
-              Favorites
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link " to="/movies/favorites">
+                Favorites
             </Link>
-          </li>
-        </ul>
-        <Switch>
-          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-          <Route path="/movies/:id" component={MoviePage} />
-          <Route path="/" component={HomePage} />
-          <Redirect from="*" to="/" />
-        </Switch>
+            </li>
+          </ul>
+          <Switch>
+            <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+            <Route path="/movies/:id" component={MoviePage} />
+            <Route path="/" component={HomePage} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </div>
       </div>
-    </div>
-  </BrowserRouter>
+    </BrowserRouter>
   );
 };
 
