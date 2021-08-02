@@ -1,37 +1,27 @@
-import React, { useState } from "react";
-import Header from "../headerMovieList";
-import MovieList from "../movieList";
-import FilterControls from "../filterControls";
+import React from "react";
+import MovieHeader from '../headerMovie'
+import "./moviePage.css";
 
-const MovieListPageTemplate = ({movies, title, buttonHandler}) => {
-  const [nameFilter, setNameFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("0");
-  const genre = Number(genreFilter)
-  let displayedMovies = movies
-    .filter(m => {
-      return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-    })
-    .filter(m => {
-      return  genre > 0
-        ? m.genre_ids.includes(Number(genreFilter))
-        : true;
-    });
-
-  const handleChange = (type, value) => {
-    if (type === "name") setNameFilter(value);
-    else setGenreFilter(value);
-  };
-
+const TemplateMoviePage = ({ movie, children }) => {
   return (
     <>
-      <Header title={title} numMovies={displayedMovies.length} />
-      <FilterControls onUserInput={handleChange} numMovies={displayedMovies.length}/>
-      <MovieList
-        buttonHandler={buttonHandler}
-        movies={displayedMovies}
-      ></MovieList>
+      <MovieHeader movie={movie} />
+      <div className="row">
+        <div className="col-3">
+          <img
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : "./film-poster-placeholder.png"
+            }
+            className="movie"
+            alt={movie.title}
+          />
+        </div>
+        <div className="col-9">{children}</div>
+      </div>
     </>
   );
 };
 
-export default MovieListPageTemplate ;
+export default TemplateMoviePage;
