@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import StubAPI from "../api/stubAPI";
-import PageTemplate from '../components/templateMovieListPage'
+import PageTemplate from "../components/templateMoviePage";
 import { getMovies } from "../api/tmdb-api";
 
 const MovieListPage = () => {

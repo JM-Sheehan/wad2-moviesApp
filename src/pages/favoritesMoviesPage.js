@@ -1,6 +1,6 @@
 import React from "react";
 import StubAPI from "../api/stubAPI";
-import PageTemplate from "../components/templateMovieListPage";
+import PageTemplate from "../components/templateMoviePage";
 
 const FavoriteMoviesPage = props => {
   const toDo = () => true;
